@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <span class="dot"></span>
+        <span id="tab-title">加载中…</span>
+      </div>
+      <div class="head-actions">
+        <button id="btn-refresh" title="刷新列表" aria-label="刷新">⟳</button>
+        <button id="btn-clear" title="清空当前标签页列表" aria-label="清空">🗑</button>
+      </div>
+    </header>
+
+    <div id="notice" class="notice hidden"></div>
+
+    <main>
+      <div id="empty" class="empty">
+        <div class="empty-icon">🎬</div>
+        <div>还没有检测到流媒体</div>
+        <div class="hint">
+          ① 在播放页上播放一次视频（刚装完扩展要按 F5 刷新页面再播放），
+          ② 保持视频播放状态再点击「刷新」按钮。<br />支持 HLS（.m3u8 / .ts 分片）与 DASH（.mpd）。
+        </div>
+        <button id="btn-scan" class="btn btn-primary" style="margin-top:10px;width:100%">扫描页面媒体资源</button>
+        <details id="debug-wrap" class="debug-wrap hidden">
+          <summary>检测日志（排查用）</summary>
+          <pre id="debug-log"></pre>
+        </details>
+      </div>
+      <ul id="streams"></ul>
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <label class="saveas">
+          <input type="checkbox" id="ck-saveas" /> 询问保存位置
+        </label>
+        <label class="conf">
+          并行分片
+          <select id="sel-concur">
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16" selected>16</option>
+            <option value="32">32</option>
+          </select>
+        </label>
+      </div>
+      <div>当前标签页检测到的流媒体 · v<span id="ver">?</span></div>
+      <div class="hint">点击下载将在浏览器内合并分片，默认保存到「下载」文件夹</div>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

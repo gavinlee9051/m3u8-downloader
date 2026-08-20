@@ -1,0 +1,410 @@
+:root {
+  --bg: #14151f;
+  --panel: #1d1f2e;
+  --panel2: #262943;
+  --border: #2f3352;
+  --text: #e6e8f2;
+  --muted: #9aa0b8;
+  --accent: #2962ff;
+  --accent-hover: #3b74ff;
+  --good: #22c55e;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 380px;
+  max-height: 560px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+  box-shadow: 0 0 6px var(--accent);
+}
+
+#tab-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.head-actions {
+  display: flex;
+  gap: 6px;
+  flex: none;
+}
+
+.head-actions button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.head-actions button:hover {
+  background: var(--accent);
+}
+
+.head-actions button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.notice {
+  margin: 8px 12px 0;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+}
+
+.notice.error {
+  border-color: var(--bad);
+  color: #fecaca;
+}
+
+.notice.visible {
+  display: block;
+}
+
+.notice.hidden {
+  display: none;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.empty {
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.empty .hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7090;
+}
+
+.debug-wrap {
+  margin-top: 10px;
+  text-align: left;
+  font-size: 11px;
+  color: #8b90ac;
+}
+
+.debug-wrap summary {
+  cursor: pointer;
+  user-select: none;
+}
+
+.debug-wrap summary:hover {
+  color: var(--text);
+}
+
+#debug-log {
+  margin-top: 6px;
+  max-height: 150px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: #0f1018;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  color: #b6bad0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stream {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.stream-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.stream-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.host {
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.path {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tags {
+  display: flex;
+  gap: 4px;
+  flex: none;
+}
+
+.tag {
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: var(--panel2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.tag-type {
+  color: #93c5fd;
+}
+
+.stream-url {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.stream-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stream-sub {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  background: var(--panel2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn-icon {
+  color: var(--muted);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.detail {
+  margin-top: 8px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.picker select {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.progress {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg);
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #7c4dff);
+  transition: width 0.2s ease;
+}
+
+/* 解析/探测阶段：流动条纹占位，不代表真实下载百分比 */
+.progress .bar.busy {
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--accent) 0 10px,
+    rgba(255, 255, 255, 0.28) 10px 20px
+  );
+  background-size: 28px 100%;
+  animation: m3u8-progress-slide 0.8s linear infinite;
+}
+
+@keyframes m3u8-progress-slide {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 28px 0;
+  }
+}
+
+.pct {
+  position: absolute;
+  right: 0;
+  top: -3px;
+  transform: translateY(-100%);
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.done-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.done-line .ok {
+  color: var(--good);
+}
+
+.done-line .file {
+  color: var(--muted);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+footer {
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #6b7090;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+  display: grid;
+  gap: 4px;
+}
+
+footer .saveas {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+footer .hint {
+  font-size: 10px;
+  color: #6b7090;
+}

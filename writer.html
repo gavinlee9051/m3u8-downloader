@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="idle" style="font:12px sans-serif;color:#888;padding:12px">M3u8 写盘器（后台辅助窗口，可忽略）</div>
+    <div id="fallback" class="hidden" style="font:13px sans-serif;padding:14px">
+      <div style="font-weight:600;margin-bottom:8px">请点击下方按钮保存视频</div>
+      <div style="color:#666;margin-bottom:8px">浏览器忽略了文件名，需要您点一下确认正确名称。</div>
+      <input id="fb-name" type="text" style="width:100%;box-sizing:border-box;margin-bottom:10px;padding:4px 6px" />
+      <button id="fb-save" style="width:100%;padding:6px 0;cursor:pointer">保存</button>
+      <div id="fb-tip" style="color:#b45309;margin-top:8px;min-height:14px"></div>
+    </div>
+    <style>
+      .hidden { display: none; }
+    </style>
+    <script src="writer.js"></script>
+  </body>
+</html>
